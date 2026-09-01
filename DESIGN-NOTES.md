@@ -45,7 +45,8 @@ generalize.
 ## Before publishing
 
 Run `bash scripts/preflight.sh` (or wire it as a pre-push hook — see the script
-header). It fails on:
+header). The same script runs in CI as a required gate on every PR into `main`
+(`.github/workflows/preflight.yml`). It fails on:
 
 - absolute home paths, Obsidian-style wiki-links, stray email addresses (the
   author fields in `LICENSE` / `plugin.json` / `marketplace.json` are the only
