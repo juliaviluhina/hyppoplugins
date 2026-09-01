@@ -42,18 +42,36 @@ Not forked: `hyppovisor` (its home is the `juliaviluhina/hyppovisor` repo),
 plus some environment-specific and vendored (github/spec-kit) skills that don't
 generalize.
 
-## Pre-publish checks that were run
+## Before publishing
 
-- `grep -ri` for real employer names, personal email/phone, personal file
-  paths, `[[wikilink]]` refs → zero hits in shipped files (author name/email in
-  `LICENSE` and `plugin.json` author fields is intentional).
-- `claude plugin validate .` → passes.
-- `markdown-to-pdf` converter smoke-tested: both stylesheets render, page-count
-  guard warns without editing, `STRIP_BEFORE` drops a preamble without touching
-  the source file.
+Run `bash scripts/preflight.sh` (or wire it as a pre-push hook — see the script
+header). It fails on:
+
+- absolute home paths, Obsidian-style wiki-links, stray email addresses (the
+  author fields in `LICENSE` / `plugin.json` / `marketplace.json` are the only
+  allowed spot), the operator's own account handle, obvious secret tokens
+- a tracked `.DS_Store`
+- a `SKILL.md` whose `name:` doesn't match its directory
+- a `marketplace.json` source with no `plugin.json`
+- a bundled shell script that fails `bash -n`
+- `claude plugin validate .`
+
+What preflight can't judge — check by eye when adding or changing a plugin:
+
+- **Examples still synthetic / unpinned.** No real person's document baked in,
+  even a self-published one (rule 2 above).
+- **No new hardcoded data.** A new path, threshold, or command name goes in
+  config or an argument, not the skill body (rule 1).
+- **The skill states its limits** where it can produce a subtly wrong result
+  (rule 3).
+- **Docs and versions updated** — top-level README, this file, and the
+  `marketplace.json` / `plugin.json` version fields for the changed plugin.
+
+Smoke-tested once at 0.2.0: `markdown-to-pdf` renders with both stylesheets, the
+page-count guard warns without editing, `STRIP_BEFORE` drops a preamble without
+touching the source file.
 
 ## Still open
 
-- Fill a real `version` bump and the repository URL in the manifests on the
-  first tagged release.
+- Fill a real repository URL in the manifests on the first tagged release.
 - Add `CONTRIBUTING.md` if outside PRs are wanted.
