@@ -1,0 +1,72 @@
+# mnookin.config.yaml
+#
+# Read by both skills in the mnookin-two-pager plugin. Put it in your
+# job-search folder; the skills search the working directory and then parent
+# directories for it. All paths are resolved relative to this file's location.
+#
+# Copy this file, delete the comments you don't need, fill in your paths.
+
+# ---------------------------------------------------------------------------
+# Used by BOTH skills
+# ---------------------------------------------------------------------------
+
+# The two-pager draft. If it doesn't exist yet, mnookin-grill creates it from
+# the nine-section skeleton.
+two_pager: ./two-pager.md
+
+# One or more notes holding your career facts / evidence. mnookin-grill checks
+# interview answers against these; mnookin-analysis-artifacts traces CV claims
+# about paid work back to them.
+evidence:
+  - ./career-history.md
+  - ./evidence-notes.md
+
+# Optional. Known limits on what your evidence supports, so claims don't drift
+# past them (e.g. "framework X was used with language Y on that project, not Z").
+constraints: ./constraints.md
+
+# Optional. URL of a finished, public two-pager to calibrate against. Leave ""
+# to let mnookin-grill find one.
+example: ""
+
+# ---------------------------------------------------------------------------
+# Used ONLY by mnookin-analysis-artifacts. Omit this whole block if you only
+# use mnookin-grill.
+# ---------------------------------------------------------------------------
+
+# The strategy doc: which positioning angle is primary, when a secondary angle
+# is used, headline/lead-paragraph locks.
+positioning_doc: ./positioning.md
+
+# One block per positioning angle. Any number — one is fine, so is five.
+#   name      human label
+#   priority  1 = primary; drives ranking, not just tie-breaks
+#   cv_content canonical content doc for this angle (edited first)
+#   sent      optional list of rendered docs fed by this content doc;
+#             add it when the mapping isn't 1:1
+directions:
+  - name: Angle A
+    priority: 1
+    cv_content: ./cv-content-a.md
+    sent:
+      - ./outgoing/CV_AngleA.md
+  - name: Angle B
+    priority: 2
+    cv_content: ./cv-content-b.md
+    sent:
+      - ./outgoing/CV_AngleB.md
+      - ./outgoing/CV_AngleB_deep.md
+
+# Artifacts generated from the sources above, kept in sync by the Apply pass.
+derived:
+  shortlist: ./shortlist.md
+  screening_questions: ./screening-questions.md   # created if missing
+  outgoing_dir: ./outgoing/
+
+# How a document in outgoing_dir is rendered to its final form. {file} is
+# replaced with the .md path. Leave "" to skip rendering.
+build_command: "bash ./build-pdf.sh {file}"
+
+# Expected page count for a rendered CV. The skill checks the real output after
+# rendering and stops if a change pushes a file over. Leave "" to skip.
+page_target: 2

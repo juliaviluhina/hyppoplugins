@@ -1,0 +1,12 @@
+{
+  "name": "mnookin-two-pager",
+  "version": "0.1.0",
+  "description": "Build a Never Search Alone (Mnookin) two-pager through a one-question-at-a-time interview, then keep downstream career docs in sync with it.",
+  "author": {
+    "name": "Iuliia Iliukhina",
+    "url": "https://github.com/juliaviluhina"
+  },
+  "homepage": "https://github.com/juliaviluhina/HyppoPlugins/tree/main/plugins/mnookin-two-pager",
+  "license": "MIT",
+  "keywords": ["career", "job-search", "never-search-alone", "mnookin", "two-pager", "interview-prep"]
+}

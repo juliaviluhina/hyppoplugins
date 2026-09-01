@@ -1,0 +1,12 @@
+{
+  "name": "conversation-to-skill",
+  "version": "0.1.0",
+  "description": "Distill a finished conversation into a reusable Claude Code skill — extract the repeatable workflow, encode the user's corrections as edge cases, write SKILL.md in the right format, and test it.",
+  "author": {
+    "name": "Iuliia Iliukhina",
+    "url": "https://github.com/juliaviluhina"
+  },
+  "homepage": "https://github.com/juliaviluhina/HyppoPlugins/tree/main/plugins/conversation-to-skill",
+  "license": "MIT",
+  "keywords": ["skill-authoring", "meta", "workflow", "claude-code"]
+}

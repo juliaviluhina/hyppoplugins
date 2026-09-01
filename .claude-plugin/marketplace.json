@@ -1,0 +1,34 @@
+{
+  "name": "hyppo-plugins",
+  "owner": {
+    "name": "Iuliia Iliukhina",
+    "url": "https://github.com/juliaviluhina"
+  },
+  "metadata": {
+    "description": "A small collection of general-purpose Claude Code skills — career-search clarity, skill authoring, document rendering. No dependency on the author's data or folder layout.",
+    "version": "0.2.0"
+  },
+  "plugins": [
+    {
+      "name": "mnookin-two-pager",
+      "source": "./plugins/mnookin-two-pager",
+      "description": "Build a Never Search Alone (Mnookin) two-pager through a one-question-at-a-time interview, then keep your downstream career docs (shortlist, CV variants, screening questions) in sync with it.",
+      "category": "productivity",
+      "keywords": ["career", "job-search", "never-search-alone", "mnookin", "two-pager", "interview-prep"]
+    },
+    {
+      "name": "conversation-to-skill",
+      "source": "./plugins/conversation-to-skill",
+      "description": "Distill a finished conversation into a reusable Claude Code skill — extract the repeatable workflow, encode the user's corrections as edge cases, write SKILL.md, and test it.",
+      "category": "development",
+      "keywords": ["skill-authoring", "meta", "workflow", "claude-code"]
+    },
+    {
+      "name": "markdown-to-pdf",
+      "source": "./plugins/markdown-to-pdf",
+      "description": "Render a Markdown file to a styled PDF via pandoc + headless Chrome. Bundled compact and prose stylesheets or bring your own; optional preamble-strip and page-count guard.",
+      "category": "productivity",
+      "keywords": ["pdf", "markdown", "pandoc", "document", "render"]
+    }
+  ]
+}

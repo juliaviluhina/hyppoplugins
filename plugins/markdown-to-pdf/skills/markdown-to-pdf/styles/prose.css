@@ -1,0 +1,69 @@
+/* prose.css — roomy serif body with a sans heading, tuned for reading
+   (letters, memos, short documents). Edit body font-family / font-size and the
+   @page margin to retune; copy this file to change fonts wholesale.
+
+   .contact-line / .date-line / .signoff hooks are for HTML spans if your
+   markdown uses them; plain markdown ignores them harmlessly. */
+
+@page {
+  size: Letter;
+  margin: 0.85in 1in;
+}
+
+body {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 11pt;
+  line-height: 1.55;
+  color: #1a1a1a;
+  max-width: 100%;
+}
+
+h1 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 16pt;
+  font-weight: 600;
+  margin: 0 0 2pt 0;
+  letter-spacing: 0.3pt;
+}
+
+.contact-line {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 9.5pt;
+  color: #444;
+  margin: 0 0 18pt 0;
+}
+
+.date-line {
+  font-size: 10.5pt;
+  color: #333;
+  margin: 0 0 16pt 0;
+}
+
+p {
+  margin: 0 0 13pt 0;
+  text-align: left;
+}
+
+.signoff {
+  margin-top: 6pt;
+}
+
+.signoff p {
+  margin: 0 0 2pt 0;
+}
+
+strong {
+  font-weight: 600;
+}
+
+a {
+  color: #1a1a1a;
+  text-decoration: none;
+  border-bottom: 0.5pt solid #999;
+}
+
+hr {
+  border: none;
+  border-top: 0.5pt solid #ddd;
+  margin: 10pt 0;
+}

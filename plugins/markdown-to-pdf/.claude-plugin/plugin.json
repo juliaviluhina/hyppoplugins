@@ -1,0 +1,12 @@
+{
+  "name": "markdown-to-pdf",
+  "version": "0.1.0",
+  "description": "Render a Markdown file to a styled PDF via pandoc + headless Chrome. Bundled compact and prose stylesheets, or bring your own; optional preamble-strip and page-count guard.",
+  "author": {
+    "name": "Iuliia Iliukhina",
+    "url": "https://github.com/juliaviluhina"
+  },
+  "homepage": "https://github.com/juliaviluhina/HyppoPlugins/tree/main/plugins/markdown-to-pdf",
+  "license": "MIT",
+  "keywords": ["pdf", "markdown", "pandoc", "document", "render"]
+}
