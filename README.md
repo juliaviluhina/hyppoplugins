@@ -1,8 +1,13 @@
 # HyppoPlugins
 
-A small marketplace of general-purpose [Claude Code](https://docs.claude.com/en/docs/claude-code)
-skills. Nothing here is tied to one person's data or folder layout — each skill
-takes its paths and options from config or arguments you supply.
+<img src="assets/hyppoplugins.png" alt="HyppoPlugins" width="200" align="right">
+
+**A small marketplace of general-purpose [Claude Code](https://docs.claude.com/en/docs/claude-code) skills.**
+
+Nothing here is tied to one person's data or folder layout — each skill takes its
+paths and options from config or arguments you supply. One of the HyppoHelpers.
+
+<br clear="right" />
 
 ## Plugins
 

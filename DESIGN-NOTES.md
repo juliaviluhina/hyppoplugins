@@ -39,7 +39,8 @@ Every place the original named a specific file or folder, the fork names a
 | `md-to-pdf`                  | `markdown-to-pdf/skills/markdown-to-pdf`            | Rebuilt as a plain converter. Bundled the shell script + both stylesheets (renamed by typography, not use-case: `dense.css`, `prose.css`). Dropped: a hardcoded name as the content-split marker (→ optional `STRIP_BEFORE`, off by default), the auto-trim-until-2-pages loop (→ `PAGE_TARGET` *warn only*, never edits content), all personal paths, the sync-back step, and file-delivery. `CSS` / `CHROME_BIN` / `STRIP_BEFORE` / `PAGE_TARGET` are the only knobs. |
 
 Not forked: `hyppovisor` (its home is the `juliaviluhina/hyppovisor` repo),
-plus some vault-specific and vendored (github/spec-kit) skills.
+plus some environment-specific and vendored (github/spec-kit) skills that don't
+generalize.
 
 ## Pre-publish checks that were run
 
