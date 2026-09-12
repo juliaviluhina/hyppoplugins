@@ -1,0 +1,117 @@
+# job-search.config.yaml
+#
+# Read by all five skills in the job-search plugin. Put it in your job-search
+# folder; the skills search the working directory and then parent directories
+# for it. All paths are resolved relative to this file's location.
+#
+# Copy this file, replace the golden-example values with your own, delete the
+# comments you don't need.
+#
+# The "golden example" persona used for illustration throughout this plugin —
+# Jordan Ashworth, a senior test-automation engineer pivoting toward AI/agent
+# tooling roles — is entirely fabricated. It exists only to show what a filled
+# config looks like; it is not a real person and not the plugin author.
+#
+# Every numeric threshold below (comp_floor, travel_max_pct, tier overrides)
+# is deliberately set to 0, not a plausible-looking number — this is a
+# structural placeholder, not salary/travel advice. Replace every 0 with your
+# own real number before using this config.
+
+# ---------------------------------------------------------------------------
+# State — where this skill set writes everything it produces
+# ---------------------------------------------------------------------------
+
+state_dir: ./job-search-data/
+# Derived paths (override individually only if you want a non-default layout):
+#   ledger:       <state_dir>/job-retrieval-ledger.md
+#   postings_dir: <state_dir>/job-postings/
+#   applications_dir: <state_dir>/applications/
+#   sessions_dir: <state_dir>/to-analyze/
+#   journal:      <state_dir>/journal.md   (append-only audit log; optional but recommended)
+
+# ---------------------------------------------------------------------------
+# Evidence base — used by job-fit-screen to cite verdicts
+# ---------------------------------------------------------------------------
+
+evidence:
+  - ./evidence/career-history.md      # chronological project/role facts
+  - ./evidence/cv-content.md          # the wording you actually put in a CV
+constraints: ./evidence/constraints.md   # optional: known limits on what evidence supports
+                                          # (e.g. "framework X used with language Y, not Z")
+
+# ---------------------------------------------------------------------------
+# Target roles — discovery scope and fit-rubric calibration
+#
+# Golden-example values below are Jordan Ashworth's, purely illustrative.
+# Replace every field with your own target titles, streams, and thresholds.
+# ---------------------------------------------------------------------------
+
+target_roles:
+  # Title tiers, searched in priority order. Any number of tiers; a tier can
+  # carry its own comp bar (tier_c below shows the pattern for a "stepping
+  # stone" tier with a stricter bar than the general comp_floor).
+  tiers:
+    - name: tier_a
+      label: "Target win"
+      titles:
+        - "AI Engineer, Developer Tooling"
+        - "Agentic AI Engineer"
+        - "AI Evaluation Engineer"
+    - name: tier_b
+      label: "Acceptable win"
+      titles:
+        - "AI Test Automation Engineer"
+        - "AI Quality Engineer"
+    - name: tier_c
+      label: "Stepping stone"
+      comp_floor_override: 0   # FAKE PLACEHOLDER — this tier's stricter bar; replace 0 with your real number
+      titles:
+        - "Staff Test Automation Engineer"
+        - "Principal SDET"
+
+  # Streams the candidate can be evaluated against, each with its own
+  # seniority ceiling (job-fit-screen references these by name).
+  streams:
+    - name: qa_test_automation
+      ceiling: "Principal"
+      stretch: null
+      above_ceiling: ["Distinguished", "Fellow"]
+    - name: developer
+      ceiling: "Senior"
+      stretch: "Lead"
+      above_ceiling: ["Staff", "Principal"]
+
+  # Archetypes to drop at discovery before spending retrieval effort.
+  excluded_archetypes:
+    - "Full-stack / web-application engineer (React/Next/Django as the core ask)"
+    - "ML / deep-learning engineer (PyTorch/TensorFlow training or fine-tuning as a requirement)"
+    - "Data scientist / research scientist"
+    - "Pure pre-sales / sales engineer"
+    - "Non-engineering roles with 'AI' in the title (PM, analyst, designer, account exec)"
+    - "Ops/support/incident-response as the team's primary charter"
+
+  # Hard pre-filters, mirrored at both discovery and the fit-screen gate.
+  hard_constraints:
+    location: "Remote (US), or hybrid within commuting distance of <your metro>"
+    work_authorization: "Green Card / US citizen not required to state — adjust to your status"
+    travel_max_pct: 0   # FAKE PLACEHOLDER — replace 0 with your real travel ceiling
+    role_nature_exclusions:
+      - "Deeply client-facing / pre-sales / consulting-delivery"
+    comp_floor:
+      base: 0     # FAKE PLACEHOLDER — 0 means unset; replace with your real minimum base salary
+      hourly: 0   # FAKE PLACEHOLDER — replace with your real minimum hourly rate
+
+# ---------------------------------------------------------------------------
+# Browser automation — optional
+#
+# job-posting-retrieval falls back to an authenticated/JS-rendering browser
+# tool only after public WebFetch and the ATS JSON APIs fail. This plugin does
+# not bundle one. If you have a browser-automation MCP tool available, name it
+# here so the skill knows to offer it as the fallback; otherwise leave blank
+# and the skill will ask you to paste the page text instead.
+# ---------------------------------------------------------------------------
+
+browser_tool: ""   # e.g. "mcp__your-browser-tool__read_page"
+
+# LinkedIn is never driven through a browser tool, regardless of the setting
+# above — see skills/job-posting-retrieval/references/board-references/linkedin.md.
