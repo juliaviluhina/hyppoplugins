@@ -1,0 +1,12 @@
+{
+  "name": "agent-design-review",
+  "version": "0.1.0",
+  "description": "Review an agent, skill, or subagent spec against three design properties — Clear Purpose, Completion Satisfaction, Renewal/Reset — and flag gaps with a concrete one-line fix per gap.",
+  "author": {
+    "name": "Iuliia Iliukhina",
+    "url": "https://github.com/juliaviluhina"
+  },
+  "homepage": "https://github.com/juliaviluhina/HyppoPlugins/tree/main/plugins/agent-design-review",
+  "license": "MIT",
+  "keywords": ["agent-design", "skill-authoring", "review", "claude-code"]
+}

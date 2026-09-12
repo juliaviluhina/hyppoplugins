@@ -1,0 +1,12 @@
+{
+  "name": "job-search",
+  "version": "0.1.0",
+  "description": "ATS-scoped job discovery, posting retrieval, evidence-cited fit screening, bounded Haiku delegation, and a resumable board-independent session loop — five config-driven skills for running a disciplined job search.",
+  "author": {
+    "name": "Iuliia Iliukhina",
+    "url": "https://github.com/juliaviluhina"
+  },
+  "homepage": "https://github.com/juliaviluhina/HyppoPlugins/tree/main/plugins/job-search",
+  "license": "MIT",
+  "keywords": ["career", "job-search", "ats", "greenhouse", "lever", "ashby", "recruiting", "job-discovery"]
+}

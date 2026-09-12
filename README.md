@@ -16,6 +16,8 @@ paths and options from config or arguments you supply. One of the HyppoHelpers.
 | **[mnookin-two-pager](./plugins/mnookin-two-pager)** | Two skills for the *Never Search Alone* (Mnookin) two-pager: `mnookin-grill` interviews you one question at a time to draft or sharpen it; `mnookin-analysis-artifacts` propagates a locked/updated two-pager into your downstream docs (shortlist, CV variants, screening questions) so they never silently drift from your stated criteria. |
 | **[conversation-to-skill](./plugins/conversation-to-skill)** | Turn a finished conversation into a reusable Claude Code skill — repeatable steps, exact commands, and your corrections captured as edge cases. |
 | **[markdown-to-pdf](./plugins/markdown-to-pdf)** | Render Markdown to a styled PDF (pandoc + headless Chrome). Bundled compact / prose stylesheets or your own; optional preamble-strip and page-count guard. |
+| **[job-search](./plugins/job-search)** | Five skills for a job search: ATS-scoped `job-discovery`, `job-posting-retrieval` with per-board reference notes, an evidence-cited `job-fit-screen` rubric, bounded `job-search-delegation` to a cheaper model, and a resumable `job-search-session` loop. |
+| **[agent-design-review](./plugins/agent-design-review)** | Review an agent/skill/subagent spec against three design properties — Clear Purpose, Completion Satisfaction, Renewal/Reset — with a one-line fix per gap. |
 
 More to come — this is a collection, not a single tool.
 
