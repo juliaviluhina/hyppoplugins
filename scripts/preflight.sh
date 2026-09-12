@@ -32,7 +32,15 @@ scan() {
 
 echo "== content =="
 scan "no absolute home paths (/Users/… /home/…)"          '/(Users|home)/[a-z]'
-scan "no [[wikilink]] vault refs"                          '\[\[[^]]+\]\]'
+
+# Wikilinks: `[[Some Page]]` — no space or `:` right after `[[` (excludes
+# bash's `[[ $var ]]` conditional and POSIX classes like `[[:space:]]`), no
+# `$`, and not ending right before `]]` in a space/bracket/`$`.
+wl_hits=$(printf '%s\n' "$TEXT_FILES" | tr '\n' '\0' \
+  | xargs -0 grep -nEI -- '\[\[[^][ $:][^]]*[^][ $]\]\]' 2>/dev/null)
+if [ -n "$wl_hits" ]; then bad "no [[wikilink]] vault refs"; printf '%s\n' "$wl_hits" | sed 's/^/     /'
+else ok "no [[wikilink]] vault refs"; fi
+
 scan "no personal iCloud/account handle"                   'naval-94coals'
 scan "no obvious secrets (sk-/ghp_/AKIA/xoxb-/PRIVATE KEY)" \
      '(sk-[A-Za-z0-9]{20}|ghp_[A-Za-z0-9]{20}|AKIA[0-9A-Z]{16}|xoxb-[0-9]|-----BEGIN [A-Z ]*PRIVATE KEY-----)'
@@ -52,6 +60,7 @@ while IFS= read -r sk; do
   [ -n "$sk" ] || continue
   dir=$(basename "$(dirname "$sk")")
   nm=$(awk -F': *' '/^name:/{print $2; exit}' "$sk" | tr -d '[:space:]')
+  nm=$(printf '%s' "$nm" | sed -E "s/^[\"']//; s/[\"']\$//")
   if [ "$dir" != "$nm" ]; then bad "SKILL name '$nm' != dir '$dir'  ($sk)"; sk_fail=1; fi
 done < <(git ls-files '*/SKILL.md')
 [ "$sk_fail" -eq 0 ] && ok "every SKILL.md name matches its directory"
